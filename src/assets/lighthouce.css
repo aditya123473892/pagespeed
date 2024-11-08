@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+}
+
+.left-panel {
+    width: 30%; /* 30% width for the left panel */
+    background-color: #2c3e50; /* Light gray background */
+    padding: 20px;
+    border-right: 1px solid #ccc; /* Optional border */
+}
+
+.right-panel {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    width: 70%; /* 70% width for the right panel */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+}
+
+.scrollable-content {
+    height: 200%; /* Make the content taller to demonstrate scrolling */
+}
