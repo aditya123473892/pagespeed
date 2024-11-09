@@ -1,20 +1,14 @@
-import "./App.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import WebsiteGrader from "./components/WebsiteGrader";
-import Main from "./components/Main";
-import Lighthouse from "./components/lighthouse";
-import PageSpeedCards from "./components/Appspeedcard";
-import PageSpeedInsights from "./Pagespeed";
+import Lighthouse from "./components/Lighthouse";
 
 function App() {
   return (
-    <>
-      <WebsiteGrader />
-      <Main />
-      <PageSpeedCards></PageSpeedCards>
-      <PageSpeedInsights></PageSpeedInsights>
-
-      {/* <Lighthouse/> */}
-    </>
+    <Routes>
+      <Route path="/" element={<WebsiteGrader />} />
+      <Route path="/lighthouse" element={<Lighthouse />} />
+    </Routes>
   );
 }
 

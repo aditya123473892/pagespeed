@@ -1,20 +1,27 @@
-import React from 'react';
-import './ScoreCard.css';
+// Filename: ScoreCard.jsx
+import React from "react";
+import "./ScoreCard.css"; // Ensure you have the corresponding CSS file
 
-const ScoreCard = () => {
+const ScoreCard = ({ url, scores }) => {
   return (
     <div className="score-card">
       <div className="score-header">
         <div className="score-circle">
-          <span className="score-value">55</span>
+          {/* Aggregate score or display any score metric */}
+          <span className="score-value">{scores.aggregate || 0}</span>
         </div>
-        <p className="score-url">www.sarkariresult.com</p>
+        <p className="score-url">{url}</p>
       </div>
       <div className="score-details">
-        <ScoreDetail label="Performance" score={15} maxScore={30} color="red" />
-        <ScoreDetail label="SEO" score={30} maxScore={30} color="green" />
-        <ScoreDetail label="Mobile" score={0} maxScore={30} color="gray" />
-        <ScoreDetail label="Security" score={10} maxScore={10} color="green" />
+        {scores.details.map((scoreDetail, index) => (
+          <ScoreDetail
+            key={index}
+            label={scoreDetail.label}
+            score={scoreDetail.score}
+            maxScore={scoreDetail.maxScore}
+            color={scoreDetail.color}
+          />
+        ))}
       </div>
       <div className="score-footer">
         <p>Is your website slowing you down?</p>
@@ -26,14 +33,20 @@ const ScoreCard = () => {
 };
 
 const ScoreDetail = ({ label, score, maxScore, color }) => {
-  const barWidth = (score / maxScore) * 100 + '%';
+  const barWidth = (score / maxScore) * 100 + "%";
   return (
     <div className="score-detail">
       <div className="score-label">
-        {label} <span className="score-text">{score}/{maxScore}</span>
+        {label}{" "}
+        <span className="score-text">
+          {score}/{maxScore}
+        </span>
       </div>
       <div className="score-bar">
-        <div className="score-fill" style={{ width: barWidth, backgroundColor: color }}></div>
+        <div
+          className="score-fill"
+          style={{ width: barWidth, backgroundColor: color }}
+        ></div>
       </div>
     </div>
   );
